@@ -1,5 +1,5 @@
 package zero_base.src.Baekjoon.Java;
-// 팰린드롬 만들기
+// 팰린드롬 만들기 - Clear!
 // https://www.acmicpc.net/problem/1254
 /*
 입력1: abab
@@ -15,72 +15,56 @@ package zero_base.src.Baekjoon.Java;
 출력4: 38
 */
 
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class SilverII_1254 {
+
+    public static boolean palindromeCK(String palindromeFront, String palindromeBack, boolean lenOfPalindromeOddFlag) {
+        if (palindromeFront.startsWith(palindromeBack)) {
+            if (lenOfPalindromeOddFlag == true) {
+                System.out.println(palindromeFront.length() * 2 + 1);
+                return true;
+            } else {
+                System.out.println(palindromeFront.length() * 2);
+                return true;
+            }
+
+        }
+        return false;
+    }
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
         String S = sc.nextLine();
+        boolean palindromeFlag = true;
 
-        int centerIdx = S.length() / 2 - 1;
-        LinkedList<Character> postPalindrome = new LinkedList<>();
+        int centerIdx = S.length() / 2;
+        boolean lenOfPalindromeOddFlag = false;
 
-        if (centerIdx >= S.length() / 2) {
-            for (int i = 0; i < centerIdx; i++) {
-                postPalindrome.addFirst(S.charAt(i));
-            }
-            for (int i = centerIdx + 1; i < S.length(); i++) {
-                if ((char)postPalindrome.peek() == S.charAt(i)) {
-                    postPalindrome.poll();
+        do {
+            lenOfPalindromeOddFlag = false;
+            String palindromeFront = Arrays.stream(S.substring(0, centerIdx).split("")).reduce("", (x, y) -> y + x);
+            String palindromeBack = Arrays.stream(S.substring(centerIdx).split("")).collect(Collectors.joining(""));
+
+            palindromeFlag = palindromeCK(palindromeFront, palindromeBack, lenOfPalindromeOddFlag);
+
+            if (palindromeFlag == true) {
+                return;
+            } else {
+                lenOfPalindromeOddFlag = true;
+                palindromeFront = Arrays.stream(S.substring(0, centerIdx).split("")).reduce("", (x, y) -> y + x);
+                palindromeBack = Arrays.stream(S.substring(centerIdx + 1).split("")).collect(Collectors.joining(""));
+
+                palindromeFlag = palindromeCK(palindromeFront, palindromeBack, lenOfPalindromeOddFlag);
+
+                if (palindromeFlag == true) {
+                    return;
                 } else {
-                    break;
+                    centerIdx++;
                 }
             }
-
-            if (postPalindrome.size() == 0) {
-
-            }
-        }
-
-//        do {
-//            palindromeFlag = true;
-//
-//            for (int i = 1; i <= centerIdx + 1; i++) {
-//                if (centerIdx + i < S.length()) {
-//                    if (S.charAt(centerIdx - i + 1) != S.charAt(centerIdx + i)) {
-//                        palindromeFlag = false;
-//                        centerIdx++;
-//                        break;
-//                    }
-//                } else if (centerIdx + i >= S.length() && palindromeFlag == true){
-//                    S += S.charAt(i);
-//                }
-//            }
-//
-//            if (palindromeFlag == true) {
-//                System.out.println(S.length());
-//                return;
-//            }
-//
-//            palindromeFlag = true;
-//            for (int i = 1; i <= centerIdx; i++) {
-//                if (centerIdx + i < S.length()) {
-//                    if (S.charAt(centerIdx - i) != S.charAt(centerIdx + i)) {
-//                        palindromeFlag = false;
-//                        break;
-//                    }
-//                } else if (centerIdx + i >= S.length() && palindromeFlag == true){
-//                    S += S.charAt(i);
-//                }
-//
-//            }
-//
-//        } while (palindromeFlag == false);
-//
-//        System.out.println(S.length());
-
+        } while (palindromeFlag == false);
     }
 }

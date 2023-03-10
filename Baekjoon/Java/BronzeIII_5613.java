@@ -1,5 +1,6 @@
-package zero_base.src.Baekjoon;
-// 백준(5613) 계산기 프로그램
+package zero_base.src.Baekjoon.Java;
+// 백준(5613) 계산기 프로그램 - Clear
+// https://www.acmicpc.net/problem/5613
 /*
 입력1:
 1

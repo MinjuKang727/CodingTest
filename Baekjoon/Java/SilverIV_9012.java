@@ -1,8 +1,6 @@
-package zero_base.src.Baekjoon;
-// 괄호
-
-import java.util.LinkedList;
-import java.util.Scanner;
+package zero_base.src.Baekjoon.Java;
+// 괄호 - Clear!
+// https://www.acmicpc.net/problem/9012
 
 /*
 입력1:
@@ -33,6 +31,8 @@ NO
 NO
 NO
  */
+import java.util.LinkedList;
+import java.util.Scanner;
 public class SilverIV_9012 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

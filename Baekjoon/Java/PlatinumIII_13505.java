@@ -1,4 +1,4 @@
-package zero_base.src.Baekjoon;
+package zero_base.src.Baekjoon.Java;
 /*
 13505번 - 두 수 XOR
 https://www.acmicpc.net/problem/13505
@@ -19,11 +19,7 @@ https://www.acmicpc.net/problem/13505
 출력3: 48
 */
 
-import zero_base.src.com.eightcruz.javastudy.CompareArrays;
-
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class PlatinumIII_13505 {

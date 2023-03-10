@@ -1,6 +1,7 @@
-package zero_base.src.Baekjoon;
+package zero_base.src.Baekjoon.Java;
 /*
-10807번 개수 세기
+10807번 개수 세기 - Clear
+https://www.acmicpc.net/problem/10807
 
 입력1:
 11
